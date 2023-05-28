@@ -1,14 +1,14 @@
-import { TicketState } from "../../common/components/constant/enums";
+import { nanoid } from "nanoid";
 import * as Type from "./TicketsService.type";
 
 const GetTickets = (): Type.ITicketData => {
   return {
     tickets: [
       {
-        id: 1,
+        id: nanoid(),
         title: "Initial project setup",
         description: "Set up the project",
-        state: TicketState.New,
+        state: 'New'
       },
     ],
   };

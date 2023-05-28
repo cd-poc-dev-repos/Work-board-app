@@ -1,10 +1,8 @@
-import { TicketState } from "../../common/components/constant/enums";
-
 interface ITicket {
-  id: number;
+  id: string;
   title: string;
   description: string;
-  state: TicketState;
+  state: string;
 }
 
 interface ITicketData {

@@ -1,7 +1,7 @@
 import { DraggableProvided } from "react-beautiful-dnd";
 
 interface ITicket {
-  id: number,
+  id: string,
   title: string;
   provided: DraggableProvided;
 }

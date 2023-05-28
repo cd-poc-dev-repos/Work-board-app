@@ -6,7 +6,7 @@ interface IBoard {
 }
 
 interface ITicketData {
-  id: number;
+  id: string;
   title: string;
 }
 

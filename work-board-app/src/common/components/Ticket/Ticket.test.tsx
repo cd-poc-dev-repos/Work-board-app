@@ -4,6 +4,7 @@ import Ticket from "./Ticket";
 describe("Ticket", () => {
   describe("When renders", () => {
     const props = {
+      id: 1,
       title: "ticket a",
       provided: {
         innerRef: () => {

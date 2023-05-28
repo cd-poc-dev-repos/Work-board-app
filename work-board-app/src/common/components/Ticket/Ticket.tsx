@@ -2,7 +2,7 @@ import React from "react";
 import * as Type from "./Ticket.type";
 import * as Styled from "./Ticket.style";
 
-const Ticket = ({ provided, title }: Type.ITicket) => {
+const Ticket = ({ id, provided, title }: Type.ITicket) => {
   return (
     <Styled.Container
       ref={provided.innerRef}

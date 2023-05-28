@@ -5,7 +5,7 @@ import * as Type from "./Board.type";
 import * as Styled from "./Board.style";
 
 const Board = ({ name, tickets }: Type.IBoard ) => {
-  const grid = 8;
+  const grid = 10;
 
   const getListStyle = (isDraggingOver: boolean) => ({
     width: "200px",

@@ -2,6 +2,7 @@ import React from 'react';
 import SideBar from './common/components/SideBar';
 import SiteHeader from './common/components/SiteHeader';
 import * as Styled from './App.style';
+import WorkBoard from './pages/workboard';
 import './App.css';
 
 function App() {
@@ -10,7 +11,9 @@ function App() {
       <SiteHeader />
         <Styled.Container>
           <SideBar />
-          <Styled.Content>board</Styled.Content>
+          <Styled.Content>
+            <WorkBoard />
+          </Styled.Content>
         </Styled.Container>
     </div>
   );

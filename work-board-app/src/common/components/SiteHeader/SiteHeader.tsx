@@ -1,8 +1,16 @@
 import React from "react";
-import * as Styled from './SiteHeader.style';
+import AppBar from "@mui/material/AppBar";
+import Container from "@mui/material/Container";
+import Toolbar from "@mui/material/Toolbar";
 
 const SiteHeader = () => {
-    return <Styled.Container />
-}
+  return (
+    <AppBar position="static">
+      <Container maxWidth="xl">
+        <Toolbar disableGutters />
+      </Container>
+    </AppBar>
+  );
+};
 
 export default SiteHeader;

@@ -6,6 +6,7 @@ describe("Ticket", () => {
     const props = {
       id: '1',
       title: "ticket a",
+      description: 'desc',
       provided: {
         innerRef: () => {
           return null;

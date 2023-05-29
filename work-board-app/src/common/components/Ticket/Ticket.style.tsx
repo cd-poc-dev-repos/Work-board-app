@@ -12,7 +12,7 @@ const HeaderContainer = styled.div`
   height: 40px;
   padding: 10px;
   overflow: hidden;
-  background-color: aliceblue;
+  background-color: #85c3fa;
 `;
 
 const HeaderContent = styled.p`

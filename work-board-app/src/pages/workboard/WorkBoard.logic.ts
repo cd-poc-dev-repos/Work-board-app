@@ -21,13 +21,4 @@ const updateTickets = (droppableId: string, draggableId: string, tickets: Type.I
     return updatedTickets;
 }
 
-const createTicket = (tickets: Type.ITicket[]) => {
-  const updatedTickets = [...tickets];
-  const newTicket = { id: nanoid(), title: 'new', description: '', state: 'New'};
-
-  updatedTickets.push(newTicket);
-
-  return updatedTickets;
-}
-
-export { fetchTickets, updateTickets, createTicket };
+export { fetchTickets, updateTickets };

@@ -2,7 +2,7 @@ import React from "react";
 import * as Type from "./Ticket.type";
 import * as Styled from "./Ticket.style";
 
-const Ticket = ({ id, provided, title }: Type.ITicket) => {
+const Ticket = ({ id, provided, title, description }: Type.ITicket) => {
   return (
     <Styled.Container
       ref={provided.innerRef}
@@ -14,7 +14,7 @@ const Ticket = ({ id, provided, title }: Type.ITicket) => {
             <Styled.HeaderContent>{title}</Styled.HeaderContent>
         </Styled.HeaderContainer>
         <Styled.DetailContainer>
-            <Styled.DetailContent>description</Styled.DetailContent>
+            <Styled.DetailContent>{description}</Styled.DetailContent>
         </Styled.DetailContainer>
     </Styled.Container>
   );

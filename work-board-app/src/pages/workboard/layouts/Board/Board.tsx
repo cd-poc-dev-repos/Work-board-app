@@ -10,8 +10,8 @@ const Board = ({ name, tickets }: Type.IBoard ) => {
   const getListStyle = (isDraggingOver: boolean) => ({
     width: "200px",
     height: "100%",
-    minHeight: "200px",
     padding: grid,
+    minHeight: "200px",
     borderTop: "1px solid black",
     background: isDraggingOver ? "lightblue" : "rgb(237, 237, 237)"
   });
@@ -35,7 +35,7 @@ const Board = ({ name, tickets }: Type.IBoard ) => {
                 index={index}
               >
                 {(provided, snapshot) => (
-                    <Ticket id={item.id} title={item.title} provided={provided} />
+                  <Ticket id={item.id} title={item.title} description={item.description} provided={provided} />
                 )}
               </Draggable>
             ))}

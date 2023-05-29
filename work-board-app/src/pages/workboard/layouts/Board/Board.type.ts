@@ -8,6 +8,7 @@ interface IBoard {
 interface ITicketData {
   id: string;
   title: string;
+  description: string;
 }
 
 export type { IBoard, ITicketData, ITicket };

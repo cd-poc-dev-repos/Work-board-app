@@ -5,6 +5,7 @@ import * as Styled from "./Ticket.style";
 const Ticket = ({ id, provided, title, description, handleClick }: Type.ITicket) => {
   return (
     <Styled.Container
+      key={id}
       ref={provided.innerRef}
       {...provided.draggableProps}
       {...provided.dragHandleProps}

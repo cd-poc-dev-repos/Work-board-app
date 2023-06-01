@@ -2,7 +2,7 @@ import React from "react";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
 import { SpeedDial, SpeedDialIcon, SpeedDialAction, Box } from "@mui/material";
 import AddNewIcon from "../../media/images/createnew.png";
-import Modal from '../../common/components/Modal';
+import Modal from "../../common/components/Modal";
 import Board from "./layouts/Board";
 import Details from "./layouts/Details/Details";
 import * as Logic from "./WorkBoard.logic";

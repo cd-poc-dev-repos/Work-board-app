@@ -1,10 +1,9 @@
 import React from "react";
+import { nanoid } from "nanoid";
 import { Button } from "@mui/material";
 import * as Type from "./Details.type";
 import * as Logic from "./Details.logic";
 import * as Styled from "./Details.style";
-import { nanoid } from "nanoid";
-import { listenerCount } from "events";
 
 const Details = ({ ticketId, tickets, updateTickets, handleCloseModal }: Type.IDetails) => {
   const [ticket, setTicket] = React.useState<Type.ITicket>({ id: '', title: '', description: '', state: '' });

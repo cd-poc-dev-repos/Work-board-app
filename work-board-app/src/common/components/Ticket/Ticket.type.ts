@@ -5,6 +5,7 @@ interface ITicket {
   title: string;
   description: string;
   provided: DraggableProvided;
+  handleClick: () => void;
 }
 
 export type { ITicket };

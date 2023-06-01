@@ -7,6 +7,7 @@ describe("Ticket", () => {
       id: '1',
       title: "ticket a",
       description: 'desc',
+      handleClick: jest.fn(),
       provided: {
         innerRef: () => {
           return null;

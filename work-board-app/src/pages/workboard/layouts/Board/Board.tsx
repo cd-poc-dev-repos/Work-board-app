@@ -4,7 +4,7 @@ import Ticket from "../../../../common/components/Ticket";
 import * as Type from "./Board.type";
 import * as Styled from "./Board.style";
 
-const Board = ({ name, tickets }: Type.IBoard ) => {
+const Board = ({ name, tickets, handleOpenTicket }: Type.IBoard ) => {
   const grid = 10;
 
   const getListStyle = (isDraggingOver: boolean) => ({
@@ -35,7 +35,13 @@ const Board = ({ name, tickets }: Type.IBoard ) => {
                 index={index}
               >
                 {(provided, snapshot) => (
-                  <Ticket id={item.id} title={item.title} description={item.description} provided={provided} />
+                  <Ticket 
+                    id={item.id} 
+                    title={item.title} 
+                    description={item.description} 
+                    provided={provided} 
+                    handleClick={() => handleOpenTicket(item.id)}
+                  />
                 )}
               </Draggable>
             ))}

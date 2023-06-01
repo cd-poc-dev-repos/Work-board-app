@@ -1,34 +1,46 @@
 import React from "react";
-import { Button, TextField } from "@mui/material";
+import { Button } from "@mui/material";
 import * as Type from "./Details.type";
 import * as Logic from "./Details.logic";
 import * as Styled from "./Details.style";
+import { nanoid } from "nanoid";
+import { listenerCount } from "events";
 
 const Details = ({ ticketId, tickets, updateTickets, handleCloseModal }: Type.IDetails) => {
-  const [title, setTitle] = React.useState('');
-  const [description, setDescription] = React.useState('');
+  const [ticket, setTicket] = React.useState<Type.ITicket>({ id: '', title: '', description: '', state: '' });
 
-  const handleAddNewTicket = (title: string, description: string, tickets: Type.ITicket[]) => {
-    const updatedTickets = Logic.createTicket(title, description, tickets);
+  const handleSaveTicket = (ticket: Type.ITicket, tickets: Type.ITicket[]) => {
+    let updatedTickets;
+    const existingRecord = tickets.find(x => x.id === ticket.id);
+
+    if (existingRecord) {
+      updatedTickets = Logic.saveTicket(ticket, tickets);
+    } else {
+      updatedTickets = Logic.createTicket(ticket, tickets);
+    }
 
     updateTickets(updatedTickets);
     handleCloseModal();
   };
 
-  const handleChange = (e: any, updateField: (value: string) => void) => {
+  const handleChange = (e: any, field: 'title' | 'description' ) => {
     const { value } = e.target;
+    let updatedTicket = { ...ticket };
 
-    updateField(value);
+    updatedTicket[field] = value;
+
+    setTicket(updatedTicket);
   };
 
   React.useEffect(() => {
     const init = () => {
       if (ticketId) {
         const ticket = tickets.find(x => x.id === ticketId);
-
+        
         if (ticket) {
-          setTitle(ticket?.title);
-          setDescription(ticket?.description);
+          setTicket(ticket);
+        } else {
+          setTicket({ id: nanoid(), title: '', description: '', state: 'New' });
         }
       }
     };
@@ -39,14 +51,14 @@ const Details = ({ ticketId, tickets, updateTickets, handleCloseModal }: Type.ID
   return (
     <Styled.Container>
       <Styled.Header>
-        <Styled.HeaderTitle label='title' onChange={(e) => handleChange(e, setTitle)}/>
+        <Styled.HeaderTitle label='title' value={ticket?.title} onChange={(e) => handleChange(e, 'title')}/>
       </Styled.Header>
       <Styled.ContentContainer>
-        <Styled.Content label='description' multiline onChange={(e) => handleChange(e, setDescription)}/>
+        <Styled.Content label='description' multiline value={ticket?.description} onChange={(e) => handleChange(e, 'description')}/>
       </Styled.ContentContainer>
       <Styled.Footer>
-        <Button onClick={() => handleAddNewTicket(title, description, tickets)}>add</Button>
-    </Styled.Footer>
+        <Button onClick={() => handleSaveTicket(ticket, tickets)}>Save and close</Button>
+      </Styled.Footer>
     </Styled.Container>
   );
 };

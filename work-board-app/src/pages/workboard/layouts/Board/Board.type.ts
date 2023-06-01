@@ -2,7 +2,8 @@ import { ITicket } from '../../../../api/Tickets/TicketsService.type';
 
 interface IBoard {
   name: string;
-  tickets: ITicket[]
+  tickets: ITicket[];
+  handleOpenTicket: (ticketId: string) => void
 }
 
 interface ITicketData {

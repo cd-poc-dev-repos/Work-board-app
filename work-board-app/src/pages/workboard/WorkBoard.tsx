@@ -8,6 +8,7 @@ import Details from "./layouts/Details/Details";
 import * as Logic from "./WorkBoard.logic";
 import * as Type from "./WorkBoard.type";
 import * as Styled from "./WorkBoard.style";
+import SiteHeader from "../../common/components/SiteHeader";
 
 const WorkBoard = () => {
   const [tickets, setTickets] = React.useState<Type.ITicket[]>([]);
@@ -51,6 +52,7 @@ const WorkBoard = () => {
 
   return (
     <>
+      <SiteHeader AddNewTaskCallback={handleAddTicket}/>
       <Styled.Container>
         <DragDropContext onDragEnd={handleDragEnd}>
           <Board name="New" tickets={tickets.filter(x => x.state === "New" )} handleOpenTicket={handleOpenTicket} />
@@ -59,20 +61,6 @@ const WorkBoard = () => {
           <Board name="In Test" tickets={tickets.filter(x => x.state === "In Test" )} handleOpenTicket={handleOpenTicket} />
           <Board name="Done" tickets={tickets.filter(x => x.state === "Done" )} handleOpenTicket={handleOpenTicket} />
         </DragDropContext>
-        <Box sx={{ height: 320, transform: "translateZ(0px)", flexGrow: 1, position: "absolute", bottom: 70, right: 20  }}>
-        <SpeedDial
-          ariaLabel="options"
-          sx={{ position: "absolute", bottom: 16, right: 16 }}
-          icon={<SpeedDialIcon />}
-        >
-          <SpeedDialAction
-            key="Add"
-            tooltipTitle="Add"
-            onClick={handleAddTicket}
-            icon={<Styled.SpeedDialIcon src={AddNewIcon} alt="new" />}
-          />
-        </SpeedDial>
-      </Box>
       </Styled.Container>
       <Modal show={showDetailModal} handleCloseModal={setShowDetailModal}>
         <Details

@@ -23,7 +23,7 @@ const Board = ({ name, tickets, handleOpenTicket }: Type.IBoard ) => {
       </Styled.HeaderContainer>
       <Droppable droppableId={name}>
         {(provided, snapshot) => (
-          <div
+          <Styled.DroppableArea
             {...provided.droppableProps}
             ref={provided.innerRef}
             style={getListStyle(snapshot.isDraggingOver)}
@@ -46,7 +46,7 @@ const Board = ({ name, tickets, handleOpenTicket }: Type.IBoard ) => {
               </Draggable>
             ))}
             {provided.placeholder}
-          </div>
+          </Styled.DroppableArea>
         )}
       </Droppable>
     </Styled.Container>

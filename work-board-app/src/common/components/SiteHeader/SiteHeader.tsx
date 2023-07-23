@@ -1,11 +1,8 @@
 import React from "react";
+import * as Type from './SiteHeader.type';
 import * as Styled from './SiteHeader.style';
 
-interface ISiteHeaderProps {
-  AddNewTaskCallback: () => void;
-}
-
-const SiteHeader = ({ AddNewTaskCallback }: ISiteHeaderProps)=> {
+const SiteHeader = ({ AddNewTaskCallback }: Type.ISiteHeaderProps)=> {
   return (
     <Styled.Container>
       <Styled.Title>Project A</Styled.Title>

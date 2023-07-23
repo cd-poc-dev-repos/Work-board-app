@@ -5,10 +5,7 @@ const Container = styled.div`
   display: flex;
   padding: 0 40px;
   background-color: #EEEEEE;
+  overflow-x: scroll;
 `;
 
-const SpeedDialIcon = styled.img`
-  width: 20px;
-`;
-
-export { Container, SpeedDialIcon };
+export { Container };

@@ -12,8 +12,8 @@ const Modal = ({ show, handleCloseModal, children }: Type.IModal) => {
     boxShadow: 24,
     p: 4,
     padding: 0,
-    height: 400,
-    width: 600
+    height: 500,
+    width: 800
   };
 
   return (

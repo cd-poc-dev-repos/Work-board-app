@@ -50,14 +50,31 @@ const Details = ({ ticketId, tickets, updateTickets, handleCloseModal }: Type.ID
   return (
     <Styled.Container>
       <Styled.Header>
-        <Styled.HeaderTitle label='title' value={ticket?.title} onChange={(e) => handleChange(e, 'title')}/>
+        <Styled.HeaderUpper>
+          <Styled.HeaderId>12323</Styled.HeaderId>
+          <Styled.HeaderTitle 
+            variant="standard" 
+            placeholder="title"
+            value={ticket?.title} 
+            onChange={(e) => handleChange(e, 'title')}
+            InputProps={{
+              disableUnderline: true
+            }}
+          />
+        </Styled.HeaderUpper>
+        <Styled.HeaderLower>
+          <p>Christopher Dunn</p>
+          <Styled.SaveButton onClick={() => handleSaveTicket(ticket, tickets)}>Save</Styled.SaveButton>
+        </Styled.HeaderLower>
       </Styled.Header>
+      <Styled.ContentUpperContainer>
+        <div><p>State: </p><p>In Progress</p></div>
+        <div><p>Project: </p><p>Area</p></div>
+      </Styled.ContentUpperContainer>
       <Styled.ContentContainer>
-        <Styled.Content label='description' multiline value={ticket?.description} onChange={(e) => handleChange(e, 'description')}/>
+        <label>Description</label>
+        <Styled.Content multiline value={ticket?.description} onChange={(e) => handleChange(e, 'description')}/>
       </Styled.ContentContainer>
-      <Styled.Footer>
-        <Button onClick={() => handleSaveTicket(ticket, tickets)}>Save and close</Button>
-      </Styled.Footer>
     </Styled.Container>
   );
 };

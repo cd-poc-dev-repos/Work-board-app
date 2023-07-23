@@ -1,14 +1,12 @@
 import React from "react";
 import { DragDropContext, DropResult } from "react-beautiful-dnd";
-import { SpeedDial, SpeedDialIcon, SpeedDialAction, Box } from "@mui/material";
-import AddNewIcon from "../../media/images/createnew.png";
 import Modal from "../../common/components/Modal";
+import SiteHeader from "../../common/components/SiteHeader";
 import Board from "./layouts/Board";
 import Details from "./layouts/Details/Details";
 import * as Logic from "./WorkBoard.logic";
 import * as Type from "./WorkBoard.type";
 import * as Styled from "./WorkBoard.style";
-import SiteHeader from "../../common/components/SiteHeader";
 
 const WorkBoard = () => {
   const [tickets, setTickets] = React.useState<Type.ITicket[]>([]);

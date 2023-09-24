@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 const Container = styled.header`
+  margin: 0;
   height: 60px;
   display: flex;
-  margin: 0 50px 0 0;
   align-items: center;
   background-color: #fff;
   padding: 10px 30px 10px 50px;

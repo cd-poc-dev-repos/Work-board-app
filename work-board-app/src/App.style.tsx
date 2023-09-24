@@ -8,7 +8,7 @@ const Container = styled.div`
 `;
 
 const Content = styled.div`
-  width: 100%;
+  width: calc(100% - 60px);
   background-color: #ededed;
 `;
 

@@ -69,7 +69,6 @@ const Details = ({ ticketId, tickets, updateTickets, handleCloseModal }: Type.ID
       </Styled.Header>
       <Styled.ContentUpperContainer>
         <div><p>State: </p><p>In Progress</p></div>
-        <div><p>Project: </p><p>Area</p></div>
       </Styled.ContentUpperContainer>
       <Styled.ContentContainer>
         <label>Description</label>

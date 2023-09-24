@@ -1,12 +1,29 @@
 import styled from 'styled-components';
 
 const Container = styled.div`
-  border: 1px solid #a99c9c;
-  background-color: rgb(237, 237, 237);
+  border: none;
+  margin: 0 60px;
+  background-color: #EEEEEE;
+  
+  margin: 0px 15px !important; 
 `;
 
-const HeaderContainer = styled.div``;
+const DroppableArea = styled.div`
+  width: 240px !important;
+  border: none !important;
+  padding: 10px 0 !important;
+`;
 
-const HeaderContent = styled.h3``;
+const HeaderContainer = styled.div`
+  height: 40px;
+  background-color: #fff;
+`;
 
-export { Container,HeaderContainer, HeaderContent }
+const HeaderContent = styled.h3`
+  color: #3E2F7F;
+  font-size: 16px;
+  padding-top: 7px;
+  font-weight: 500;
+`;
+
+export { Container, DroppableArea, HeaderContainer, HeaderContent }

@@ -1,15 +1,13 @@
 import React from "react";
-import AppBar from "@mui/material/AppBar";
-import Container from "@mui/material/Container";
-import Toolbar from "@mui/material/Toolbar";
+import * as Type from './SiteHeader.type';
+import * as Styled from './SiteHeader.style';
 
-const SiteHeader = () => {
+const SiteHeader = ({ AddNewTaskCallback }: Type.ISiteHeaderProps)=> {
   return (
-    <AppBar position="static">
-      <Container maxWidth="xl">
-        <Toolbar disableGutters />
-      </Container>
-    </AppBar>
+    <Styled.Container>
+      <Styled.Title>Project A</Styled.Title>
+      <Styled.Button onClick={AddNewTaskCallback}>+ Add Task</Styled.Button>
+    </Styled.Container>
   );
 };
 

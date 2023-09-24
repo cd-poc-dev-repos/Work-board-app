@@ -4,14 +4,14 @@ import Ticket from "../../../../common/components/Ticket";
 import * as Type from "./Board.type";
 import * as Styled from "./Board.style";
 
-const Board = ({ name, tickets }: Type.IBoard ) => {
+const Board = ({ name, tickets, handleOpenTicket }: Type.IBoard ) => {
   const grid = 10;
 
   const getListStyle = (isDraggingOver: boolean) => ({
     width: "200px",
     height: "100%",
-    minHeight: "200px",
     padding: grid,
+    minHeight: "200px",
     borderTop: "1px solid black",
     background: isDraggingOver ? "lightblue" : "rgb(237, 237, 237)"
   });
@@ -23,7 +23,7 @@ const Board = ({ name, tickets }: Type.IBoard ) => {
       </Styled.HeaderContainer>
       <Droppable droppableId={name}>
         {(provided, snapshot) => (
-          <div
+          <Styled.DroppableArea
             {...provided.droppableProps}
             ref={provided.innerRef}
             style={getListStyle(snapshot.isDraggingOver)}
@@ -35,12 +35,18 @@ const Board = ({ name, tickets }: Type.IBoard ) => {
                 index={index}
               >
                 {(provided, snapshot) => (
-                    <Ticket id={item.id} title={item.title} provided={provided} />
+                  <Ticket 
+                    id={item.id} 
+                    title={item.title} 
+                    description={item.description} 
+                    provided={provided} 
+                    handleClick={() => handleOpenTicket(item.id)}
+                  />
                 )}
               </Draggable>
             ))}
             {provided.placeholder}
-          </div>
+          </Styled.DroppableArea>
         )}
       </Droppable>
     </Styled.Container>

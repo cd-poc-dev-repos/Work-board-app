@@ -8,17 +8,17 @@ import * as Styled from "./Details.style";
 const Details = ({ ticketId, tickets, updateTickets, handleCloseModal }: Type.IDetails) => {
   const [ticket, setTicket] = React.useState<Type.ITicket>({ id: '', title: '', description: '', state: '' });
 
-  const handleSaveTicket = (ticket: Type.ITicket, tickets: Type.ITicket[]) => {
+  const handleSaveTicket = async (ticket: Type.ITicket, tickets: Type.ITicket[]) => {
     let updatedTickets;
     const existingRecord = tickets.find(x => x.id === ticket.id);
 
     if (existingRecord) {
       updatedTickets = Logic.saveTicket(ticket, tickets);
     } else {
-      updatedTickets = Logic.createTicket(ticket, tickets);
+      updatedTickets = await Logic.createTicket(ticket);
     }
 
-    updateTickets(updatedTickets);
+    updateTickets();
     handleCloseModal();
   };
 

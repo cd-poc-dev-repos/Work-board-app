@@ -12,14 +12,20 @@ const WorkBoard = () => {
   const [tickets, setTickets] = React.useState<Type.ITicket[]>([]);
   const [showDetailModal, setShowDetailModal] = React.useState(false);
   const [currentTicketId, setCurrentTicketId] = React.useState<string | null>(null);
+
+  const updateTickets = async () => {
+    const data = await Logic.fetchTickets();
+    
+    if (data) setTickets(data.tickets);
+  }
   
-  const handleDragEnd = (e: DropResult) => {
+  const handleDragEnd = async (e: DropResult) => {
     const { destination, draggableId  } = e;
 
     if(destination) {
-      const updatedTickets = Logic.updateTickets(destination.droppableId, draggableId, tickets);
+      await Logic.updateTickets(destination.droppableId, draggableId, tickets);
       
-      setTickets(updatedTickets);
+      updateTickets();
     }
   };
 
@@ -39,12 +45,8 @@ const WorkBoard = () => {
   };
 
   React.useEffect(() => {
-    const init = async () => {
-      const data = await Logic.fetchTickets();
-      console.log('data', data?.tickets);
-
-      
-      if (data) setTickets(data.tickets);
+    const init = () => {
+      updateTickets();
     };
 
     init();
@@ -66,7 +68,7 @@ const WorkBoard = () => {
         <Details
           tickets={tickets}
           ticketId={currentTicketId}
-          updateTickets={setTickets}
+          updateTickets={updateTickets}
           handleCloseModal={handleCloseTicket}
         />
       </Modal>

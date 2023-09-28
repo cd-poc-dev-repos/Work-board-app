@@ -1,5 +1,5 @@
 import { initializeApp } from "firebase/app";
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { getFirestore, collection, getDocs, addDoc, updateDoc, doc } from 'firebase/firestore/lite';
 
 const firebaseConfig = {
   apiKey: "AIzaSyCTo-E63fsDz3Go0B5znOch6iYiu67IbxQ",
@@ -12,21 +12,33 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-// Get a list of cities from your database
-const GetTickets = async () => {
+const Get = async (table) => {
   const db = getFirestore(app);
-console.log('db', db);
-  const ticketsCollection = collection(db, 'tickets');
-  console.log('ticketCol', ticketsCollection);
-  const ticketsSnapshot = await getDocs(ticketsCollection);
+  const tableCollection = collection(db, table);
+  const tableSnapshot = await getDocs(tableCollection);
+  const tableList = tableSnapshot.docs.map(doc => doc.data());
 
-  console.log('ticketsSnapshot', ticketsSnapshot);
-
-  const ticketsList = ticketsSnapshot.docs.map(doc => doc.data());
-  console.log('ticketsList', ticketsList);
-  
-  return ticketsList;
+  return tableList;
 };
 
+const Put = async (data, table) => {
+  const db = getFirestore(app);
 
-export { GetTickets }
+  const documentToUpdate = doc(db, table, data.id);
+  console.log('documentToUpdate', documentToUpdate)
+
+  const response = await updateDoc(documentToUpdate, data);
+
+  return response;
+}
+
+const Post = async (data, table) => {
+  const db = getFirestore(app);
+  const tableCollection = collection(db, table);
+
+  const response = await addDoc(tableCollection, data);
+
+  return response;
+}
+
+export { Get, Put, Post }

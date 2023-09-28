@@ -7,18 +7,21 @@ const fetchTickets = () => {
   return data;
 };
 
-const updateTickets = (droppableId: string, draggableId: string, tickets: Type.ITicket[]) => {
-  const updatedTickets = [...tickets];
+const createTicket = (ticket: Type.ITicket) => {
+  const response = Service.CreateTicket(ticket);
 
-    let draggedTicket = tickets.find(x => x.id === draggableId);
-
-    if (draggedTicket && droppableId) {      
-      const indexToUpdate = tickets.findIndex(x => x.id === draggableId);
-
-      updatedTickets[indexToUpdate] = {...draggedTicket, state: droppableId};
-
-    }
-    return updatedTickets;
+  return response;
 }
 
-export { fetchTickets, updateTickets };
+const updateTickets = async (droppableId: string, draggableId: string, tickets: Type.ITicket[]) => {
+  let response;
+  let draggedTicket = tickets.find(x => x.id === draggableId);
+
+  if (draggedTicket && droppableId) {
+    response = await Service.UpdateTicket({...draggedTicket, state: droppableId});
+  }
+
+  return response;
+}
+
+export { fetchTickets, createTicket, updateTickets };

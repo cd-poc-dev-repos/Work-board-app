@@ -39,10 +39,12 @@ const WorkBoard = () => {
   };
 
   React.useEffect(() => {
-    const init = () => {
-      const data = Logic.fetchTickets();
+    const init = async () => {
+      const data = await Logic.fetchTickets();
+      console.log('data', data?.tickets);
 
-      setTickets(data.tickets);
+      
+      if (data) setTickets(data.tickets);
     };
 
     init();

@@ -10,7 +10,7 @@ const TicketsByStatus = async () => {
     status.forEach(status => {
         chartData.push({
             status: status,
-            count: data?.tickets.filter(x => x.state = status).length ?? 0
+            count: data?.tickets.filter(x => x.state === status).length ?? 0
         })
     });
 

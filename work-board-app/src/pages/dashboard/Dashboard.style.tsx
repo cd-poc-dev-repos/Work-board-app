@@ -27,8 +27,8 @@ const ChartTileContainer = styled.div`
 `;
 
 const ChartTile = styled.div`
-  max-width: 300px;
-  max-height: 300px;
+  width: 400px;
+  height: 400px;
   background: #fff;
 `;
 

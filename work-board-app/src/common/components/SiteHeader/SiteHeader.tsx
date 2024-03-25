@@ -1,8 +1,14 @@
 import React from "react";
+import * as Type from './SiteHeader.type';
 import * as Styled from './SiteHeader.style';
 
-const SiteHeader = () => {
-    return <Styled.Container />
-}
+const SiteHeader = ({ AddNewTaskCallback }: Type.ISiteHeaderProps)=> {
+  return (
+    <Styled.Container aria-label='site-header'>
+      <Styled.Title>Project A</Styled.Title>
+      <Styled.Button onClick={AddNewTaskCallback}>+ Add Task</Styled.Button>
+    </Styled.Container>
+  );
+};
 
 export default SiteHeader;

@@ -1,4 +1,4 @@
-import { screen, render, cleanup } from "@testing-library/react";
+import { screen, render, cleanup, fireEvent } from "@testing-library/react";
 import Ticket from "./Ticket";
 
 describe("Ticket", () => {
@@ -6,8 +6,8 @@ describe("Ticket", () => {
     const props = {
       id: '1',
       title: "ticket a",
-      description: 'desc',
-      handleClick: jest.fn(),
+      description: 'ticket description',
+      handleClick: jest.fn(), 
       provided: {
         innerRef: () => {
           return null;
@@ -28,15 +28,29 @@ describe("Ticket", () => {
       },
     };
 
-    beforeAll(() => {
-      render(<Ticket {...props} />);
+    beforeEach(() => {
+      render(
+        <Ticket {...props} />
+      );
     });
 
     it('Should display the title', () => {
-        expect(screen.queryByText(props.title)).toBeInTheDocument();
+      expect(screen.queryByText(props.title)).toBeInTheDocument();
     });
 
-    afterAll(() => {
+    it('Should display the description', () => {
+      expect(screen.queryByText(props.description)).toBeInTheDocument();
+    });
+
+    it('Should trigger the on click callback', () => {
+      const ticket = screen.getByText(props.title);
+
+      fireEvent.click(ticket);
+
+      expect(props.handleClick).toHaveBeenCalledTimes(1);
+    });
+
+    afterEach(() => {
       cleanup();
       jest.resetAllMocks();
     });
